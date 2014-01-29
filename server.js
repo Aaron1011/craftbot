@@ -27,6 +27,10 @@ process.on('exit', function() { self.terminator(); });
 app.post('/gh_callback', function(res, request) {
   console.log("Payload : ", request.body.payload)
   console.log("Commit message: ", request.body.payload.commits[0].message)
+  var body = 'Hello World';
+  res.setHeader('Content-Type', 'text/plain');
+  res.setHeader('Content-Length', Buffer.byteLength(body));
+  res.end(body);
 });
 
 
